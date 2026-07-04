@@ -1,0 +1,15 @@
+# Normalisation des fins de ligne (LF sur Linux/Mac, CRLF sur Windows)
+* text=auto
+
+# Forcer LF pour les scripts shell (OBLIGATOIRE pour Linux)
+*.sh text eol=lf
+*.service text eol=lf
+deploy/nginx.conf text eol=lf
+
+# Fichiers binaires
+*.png binary
+*.jpg binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary

@@ -1,0 +1,53 @@
+# =============================================================
+# impotbo.service — Service systemd pour le backend Node.js
+# =============================================================
+# Alternative à PM2 (choisissez l'une ou l'autre)
+#
+# Installation sur le VPS :
+#   sudo cp deploy/impotbo.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable impotbo
+#   sudo systemctl start impotbo
+#
+# Commandes utiles :
+#   sudo systemctl status impotbo
+#   sudo journalctl -u impotbo -f     # logs en temps réel
+#   sudo systemctl restart impotbo
+# =============================================================
+
+[Unit]
+Description=ImpotBO - Backend API Express.js
+Documentation=https://github.com/emmanueliung/impotbo
+After=network.target postgresql.service
+Wants=postgresql.service
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/impotbo/backend
+
+# Charger les variables d'environnement depuis .env
+EnvironmentFile=/var/www/impotbo/backend/.env
+
+# Démarrer l'application
+ExecStart=/usr/bin/node src/app.js
+
+# Redémarrage automatique en cas de crash
+Restart=always
+RestartSec=10
+StartLimitIntervalSec=60
+StartLimitBurst=3
+
+# Logs
+StandardOutput=append:/var/log/impotbo/backend.log
+StandardError=append:/var/log/impotbo/backend-error.log
+
+# Sécurité
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/var/log/impotbo
+
+[Install]
+WantedBy=multi-user.target

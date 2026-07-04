@@ -1,0 +1,44 @@
+# ==========================
+# RACINE DU MONOREPO
+# ==========================
+
+# Dépendances
+node_modules/
+
+# Variables d'environnement (NE JAMAIS committer les .env réels)
+.env
+.env.local
+.env.production
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Éditeurs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build frontend (généré sur le serveur)
+frontend/dist/
+
+# ==========================
+# BACKEND spécifique
+# ==========================
+backend/node_modules/
+backend/.env
+backend/*.log
+
+# ==========================
+# FRONTEND spécifique
+# ==========================
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/*.log
