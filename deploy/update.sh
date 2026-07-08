@@ -46,6 +46,10 @@ cd "$APP_DIR/backend"
 npm install --omit=dev --quiet
 log "Dépendances backend OK"
 
+log "Exécution des migrations de base de données..."
+npm run db:init
+log "Base de données à jour"
+
 log "Redémarrage du backend via PM2..."
 pm2 reload impuestos-backend --update-env
 log "Backend redémarré"
