@@ -120,7 +120,7 @@ cd "$BACKEND_DIR"
 npm install --production --quiet
 
 # Migrations/init DB si nécessaire
-# npm run db:init  # Décommenter si vous avez des migrations
+npm run db:init
 
 log "Redémarrage du backend via PM2..."
 if pm2 describe "$SERVICE_NAME" > /dev/null 2>&1; then
