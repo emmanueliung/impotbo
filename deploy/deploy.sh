@@ -10,12 +10,12 @@
 set -e  # Arrêter si une commande échoue
 
 # ── Configuration ─────────────────────────────────────────
-APP_DIR="/var/www/impotbo"
+APP_DIR="/var/www/impuestos-bo"
 BACKEND_DIR="$APP_DIR/backend"
 FRONTEND_DIR="$APP_DIR/frontend"
-SERVICE_NAME="impotbo"
-NGINX_CONF="/etc/nginx/sites-available/impotbo"
-NGINX_ENABLED="/etc/nginx/sites-enabled/impotbo"
+SERVICE_NAME="impuestos-backend"
+NGINX_CONF="/etc/nginx/sites-available/impuestos"
+NGINX_ENABLED="/etc/nginx/sites-enabled/impuestos"
 NODE_USER="www-data"
 
 # Couleurs pour les logs
